@@ -1,8 +1,13 @@
 package com.example.proyectobuscaminas;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.geometry.Pos;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
 import javafx.application.Application;
@@ -18,6 +23,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+
 import java.util.Random;
 
 public class BuscaMinas extends Application {
@@ -29,9 +36,14 @@ public class BuscaMinas extends Application {
 
     private int[][] tablero;
     private Button[][] botones;
+    private int tiempo = 0;
+
+
 
     @Override
     public void start(Stage primaryStage) {
+        final int[] tiempo = {0};
+
         Group root = new Group();
         Scene scene = new Scene(root, NUMERO_COLUMNAS * TAMANO_CASILLA * 2, NUMERO_FILAS * TAMANO_CASILLA * 2);
 
@@ -58,6 +70,7 @@ public class BuscaMinas extends Application {
                             marcarCasilla(posicionFila, posicionColumna);
                         }
                         comprobarVictoria();
+
                     }
 
                     private void marcarCasilla(int posicionFila, int posicionColumna) {
@@ -77,12 +90,27 @@ public class BuscaMinas extends Application {
         BorderPane borderPane = new BorderPane();
         borderPane.setCenter(grid);
 
+        // Creamos el temporizador
+        Label temporizador = new Label("Tiempo: 0");
+        temporizador.setFont(Font.font("Arial", FontWeight.BOLD, 16));
+        temporizador.setTextFill(Color.PURPLE);
+        BorderPane.setAlignment(temporizador, Pos.TOP_RIGHT);
+        borderPane.setTop(temporizador);
+
+        // Actualizamos el texto del temporizador cada segundo
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
+              tiempo[0]++;
+            temporizador.setText("Tiempo: " + tiempo[0]);
+        }));
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
 
         root.getChildren().add(borderPane);
 
         primaryStage.setScene(scene);
         primaryStage.show();
     }
+
 
     private void generarMinas() {
         Random random = new Random();
@@ -103,6 +131,7 @@ public class BuscaMinas extends Application {
                 if (tablero[fila][columna] != -1) {
                     int minasAlrededor = 0;
                     if (fila > 0 && columna>0) // error here
+
                         // Contar minas alrededor
                         if (fila > 0 && columna > 0 && tablero[fila-1][columna-1] == -1) minasAlrededor++; // arriba-izquierda
                     if (fila > 0 && tablero[fila-1][columna] == -1) minasAlrededor++; // arriba
@@ -121,6 +150,7 @@ public class BuscaMinas extends Application {
 
     private void descubrirCasilla(int fila, int columna) {
         if (tablero[fila][columna] == -1) {
+
             // Mostrar todas las minas
             for (int i = 0; i < NUMERO_FILAS; i++) {
                 for (int j = 0; j < NUMERO_COLUMNAS; j++) {
@@ -136,6 +166,7 @@ public class BuscaMinas extends Application {
             alert.setContentText("Has detonado una mina. ¡Mejor suerte la próxima vez!");
             alert.showAndWait();
         } else if (tablero[fila][columna] == 0 && botones[fila][columna].getText().equals("")) {
+
             // Descubrir todas las casillas alrededor
             botones[fila][columna].setText(String.valueOf(tablero[fila][columna]));
             botones[fila][columna].setStyle("-fx-background-color: #ccc;");
