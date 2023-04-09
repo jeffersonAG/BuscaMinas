@@ -23,6 +23,7 @@ public class TableroBuscaMinas { // clase donde se almacena la estructura logica
     int numeroFilas;   //parametro de cantidad de  numeros de filas
     int numeroColumnas;//parametro de cantidad de numero de columnas
     int numeroMinas;// parametro de cantidad de numero de minas
+    Consumer<List<Casillas>> eventoPartidaPerdida;
 
 
     /*constructor de la especificacion de la cantidad de filas ,  cantidad de columnas del tablero
@@ -74,7 +75,7 @@ public class TableroBuscaMinas { // clase donde se almacena la estructura logica
 
     }
 /* este metodo se usa para imprimir lo que existe en el tablero */
-    private void Tablero() {
+    public void Tablero() {
         for (int i = 0; i < casillas.length; i++) {
             for (int j = 0; j < casillas[i].length; j++) {
                 System.out.print(casillas[i][j].isMina() ? "#" : "0"); /*se usa para identificar las minas de los espacios vacios
@@ -154,9 +155,32 @@ public class TableroBuscaMinas { // clase donde se almacena la estructura logica
             }
             System.out.println("");
         }}
+    private void SeleccionarCasilla(int posicionFila , int posicionColumna){
+        if (this.casillas[posicionFila][posicionColumna].isMina()){
+            List<Casillas> casillasConMinas = new LinkedList<>();
+            for (int i = 0; i < casillas.length; i++) {
+                for (int j = 0; j < casillas[i].length; j++) {
+                    if (casillas[i][j].isMina()) {
+                       casillasConMinas.add(casillas[i][j]);
 
 
-    public static void main(String[] args) {
+                    }
+                }
+            }
+            eventoPartidaPerdida.accept(casillasConMinas);
+
+    }   }
+        public void eventoPartidaPerdida(Consumer<List<Casillas>>eventoPartidaPerdida){
+        this.eventoPartidaPerdida = eventoPartidaPerdida;
+
+
+        }
+
+
+
+
+
+        public static void main(String[] args) {
         TableroBuscaMinas tablero=new TableroBuscaMinas(8, 8, 3);/*se genera el tablero del proyecto
         */
         tablero.Tablero();// llama ala funcion del tablero
