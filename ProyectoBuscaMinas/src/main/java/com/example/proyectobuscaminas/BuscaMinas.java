@@ -102,7 +102,6 @@ public class BuscaMinas extends Application {
                 final int posicionFila = fila;
                 final int posicionColumna = columna;
                 botones[fila][columna].setOnMouseClicked(new EventHandler<MouseEvent>() {
-
                     @Override
                     public void handle(MouseEvent event) {
                         if (event.getButton() == MouseButton.PRIMARY) {
@@ -119,8 +118,20 @@ public class BuscaMinas extends Application {
                     }
 
                     private void marcarCasilla(int posicionFila, int posicionColumna) {
-                        // Función que se llama al hacer clic derecho en una casilla
+                        Button boton = botones[posicionFila][posicionColumna];
+                        if (!boton.isDisabled()) {
+                            if (boton.getText().equals("")) {
+                                // Si la casilla está vacía, la marca con una bandera
+                                boton.setStyle("-fx-background-color: blue; -fx-border-color: #999;");
+                                boton.setText(":v");
+                            } else if (boton.getText().equals(":v")) {
+                                // Si la casilla ya tiene una bandera, la desmarca
+                                boton.setStyle("-fx-background-color: #ddd; -fx-border-color: #999;");
+                                boton.setText("");
+                            }
+                        }
                     }
+
 
                     private void comprobarVictoria() {
                         // Función que se llama para comprobar si se ha ganado el juego
