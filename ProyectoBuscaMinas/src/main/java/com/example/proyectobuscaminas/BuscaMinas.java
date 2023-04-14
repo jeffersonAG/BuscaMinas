@@ -138,7 +138,7 @@ if (turno==1){
     turno=2;
 
 }}
-                            if (event.getButton() == MouseButton.SECONDARY) {
+                            if (event.getButton() == MouseButton.SECONDARY && turno==2) {
 if (turno==2){
     while (turno==2){
     Random random = new Random();
