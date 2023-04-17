@@ -12,7 +12,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
-
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -47,7 +46,7 @@ public class BuscaMinas extends Application {
     private static final int NUMERO_COLUMNAS = 8;
 private  int turno = 1;
     // Número de minas que habrá en el tablero
-    private static final int NUMERO_MINAS = 4;
+    private static final int NUMERO_MINAS = 6;
 
     // Matriz que representa el estado del tablero (0 = vacío, 1 = mina)
     private int[][] tablero;
@@ -67,12 +66,15 @@ private  int turno = 1;
         Group root = new Group();
 
         // Creación de la escena con el tamaño determinado por el número de filas, columnas y tamaño de las casillas
-        Scene scene = new Scene(root, NUMERO_COLUMNAS * TAMANO_CASILLA * 2, NUMERO_FILAS * TAMANO_CASILLA * 2);
+        Scene scene = new Scene(root, NUMERO_COLUMNAS * TAMANO_CASILLA * 3, NUMERO_FILAS * TAMANO_CASILLA * 3);
         scene.setFill(Color.BLACK); // Establecer el color de fondo de la ventana a negro
 
         // Inicialización del tablero y de la matriz de botones
         tablero = new int[NUMERO_FILAS][NUMERO_COLUMNAS];
         botones = new Button[NUMERO_FILAS][NUMERO_COLUMNAS];
+
+
+
 
 
 
@@ -89,6 +91,7 @@ private  int turno = 1;
          Actualiza el tiempo cada segundo utilizando una Timeline.
          */
         GridPane grid = new GridPane();
+
         grid.setAlignment(Pos.CENTER);
         // Crea el botón de reinicio
         Button botonReiniciar = new Button("Reiniciar");
@@ -118,12 +121,9 @@ private  int turno = 1;
                 // Agrega un EventHandler para manejar los clics del ratón en cada botón
                 final int posicionFila = fila;
                 final int posicionColumna = columna;
-
-
-
-
                 botones[fila][columna].setOnMouseClicked(new EventHandler<MouseEvent>()
                 {
+
 
 
 
@@ -135,6 +135,8 @@ if (turno==1){
 
     // Llama a la función descubrirCasilla() si se hace clic izquierdo
     descubrirCasilla(posicionFila, posicionColumna);
+    contarVacias(posicionFila,posicionColumna);
+    encontrarMinas(posicionFila,posicionColumna);
     turno=2;
 
 }}
@@ -230,6 +232,40 @@ if (turno==2){
 
      Método que genera las minas en posiciones aleatorias del tablero
      */
+
+    private void encontrarMinas(int fila, int columna){
+
+
+
+        for (fila=0;fila<8;fila++){
+            for (columna =0; columna<8;columna++){
+                if(!botones[fila][columna].getText().equals("")){
+                    if(botones[fila][columna].getText().equals(String.valueOf(contarVacias(fila,columna)))){
+                        System.out.println("Aqui hay mina");
+
+                    }
+                }
+
+            }
+        }
+    }
+    public int contarVacias(int fila, int columna){
+
+        int nMinas=0;
+                    System.out.println("Holaaaaaaaaa");
+                    for (int i=Math.max(fila-1,0);i<=Math.min(fila+1,8-1);i++){
+                        for (int j=Math.max(columna-1,0);j<=Math.min(columna+1,8-1);j++){
+                            if (botones[i][j].getText().equals("")){
+System.out.println((j+1)+" , "+(i+1));
+return nMinas;
+                            }
+                        }
+
+
+
+            }
+        return nMinas;
+    }
     private void generarMinas() {
         Random random = new Random();
         int minasGeneradas = 0;
