@@ -62,6 +62,11 @@ public class Inicio_de_juego extends Application {
         boton2.setGraphic(circle2);
         boton2.setFont(Font.font("Times New Roman", 14));
         root.getChildren().add(boton2);
+        boton2.setOnAction(e -> {
+            SeleccionJuego seleccionJuego = new SeleccionJuego();
+            seleccionJuego.start(new Stage());
+        });
+
 
         // Creamos un botón para el juego
         Circle circle3 = new Circle(50, 50, 25);
