@@ -57,7 +57,7 @@ public class Inicio_de_juego extends Application {
         Circle circle2 = new Circle(50, 50, 25);
         circle2.setFill(Color.GREEN);
         Button boton2 = new Button("Juego");
-        boton2.setTranslateX(-100);
+        boton2.setTranslateX(-20);
         boton2.setTranslateY(95);
         boton2.setGraphic(circle2);
         boton2.setFont(Font.font("Times New Roman", 14));
@@ -72,7 +72,7 @@ public class Inicio_de_juego extends Application {
         Circle circle3 = new Circle(50, 50, 25);
         circle3.setFill(Color.GOLD);
         Button boton3 = new Button("Acerca del Juego ");
-        boton3.setTranslateX(100);
+        boton3.setTranslateX(250);
         boton3.setTranslateY(95);
         boton3.setGraphic(circle3);
         boton3.setFont(Font.font("Times New Roman", 14));

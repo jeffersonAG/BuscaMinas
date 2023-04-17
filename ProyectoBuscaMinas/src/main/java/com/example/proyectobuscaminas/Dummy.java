@@ -1,6 +1,5 @@
 package com.example.proyectobuscaminas;
 
-
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
@@ -37,7 +36,7 @@ import java.util.Random;
 
  o marcar una casilla sospechosa de tener una mina con el botón derecho.
  */
-public class BuscaMinas extends Application {
+public class Dummy extends Application {
 
     // Tamaño de las casillas en píxeles
     private static final int TAMANO_CASILLA = 30;
