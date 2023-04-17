@@ -10,16 +10,13 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-
 import java.io.File;
 
 public class Inicio_de_juego extends Application {
-
     @Override
     public void start(Stage primaryStage) {
         // Creamos un contenedor para los elementos de la ventana
         StackPane root = new StackPane();
-
 
         // Creamos una imagen de fondo
         Image imagenFondo = new Image(new File("src/main/resources/com/example/proyectobuscaminas/IMAGENES/Portada.png").toURI().toString());
@@ -27,8 +24,6 @@ public class Inicio_de_juego extends Application {
                 BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT,
                 BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         root.setBackground(new Background(fondo));
-
-
 
         // Creamos una escena y le asignamos el contenedor
         Scene scene = new Scene(root, 800, 650);
@@ -53,6 +48,10 @@ public class Inicio_de_juego extends Application {
         boton.setFont(Font.font("Times New Roman", 14));
         boton.setGraphic(circle);
         root.getChildren().add(boton);
+        boton.setOnAction(e -> {
+            Tutorial tutorial = new Tutorial();
+            tutorial.start(new Stage());
+        });
 
         // Creamos un botón para el juego
         Circle circle2 = new Circle(50, 50, 25);
@@ -62,7 +61,6 @@ public class Inicio_de_juego extends Application {
         boton2.setTranslateY(95);
         boton2.setGraphic(circle2);
         boton2.setFont(Font.font("Times New Roman", 14));
-
         root.getChildren().add(boton2);
 
         // Creamos un botón para el juego
@@ -101,15 +99,12 @@ public class Inicio_de_juego extends Application {
             etiqueta.setTranslateX(50);
             etiqueta.setTranslateY(80);
             root2.getChildren().add(etiqueta);
-            
+
 
             // Mostrar la nueva ventana
             Informacion.setScene(nuevaEscena);
             Informacion.show();
         });
-
-
-
 
     }
 
