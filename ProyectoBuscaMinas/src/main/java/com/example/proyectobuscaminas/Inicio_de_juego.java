@@ -6,6 +6,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
@@ -37,6 +39,12 @@ public class Inicio_de_juego extends Application {
 
         // Mostramos la ventana
         primaryStage.show();
+
+        // Creamos un objeto Media para la música de fondo
+        Media musicaFondo = new Media(new File("src/main/resources/com/example/proyectobuscaminas/IMAGENES/Fondo.mp3").toURI().toString());
+        MediaPlayer reproductorMusica = new MediaPlayer(musicaFondo);
+        reproductorMusica.setCycleCount(MediaPlayer.INDEFINITE);
+        reproductorMusica.play();
 
 
         // Creamos un botón para el tutorial del juego
