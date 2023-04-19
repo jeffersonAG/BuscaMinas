@@ -10,7 +10,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
-
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
@@ -25,6 +24,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.input.MouseButton;
+import java.io.File;
 
 import java.util.Random;
 
@@ -100,17 +103,26 @@ public class Solitario extends Application {
                     public void handle(MouseEvent event) {
                         if (event.getButton() == MouseButton.PRIMARY) {
 
+                            // Reproduce el sonido de clic izquierdo
+                            Media sonidoClickIzquierdo = new Media(new File("src/main/resources/com/example/proyectobuscaminas/IMAGENES/Click.mp3").toURI().toString());
+                            MediaPlayer reproductorClickIzquierdo = new MediaPlayer(sonidoClickIzquierdo);
+                            reproductorClickIzquierdo.play();
+
                             // Llama a la función descubrirCasilla() si se hace clic izquierdo
                             descubrirCasilla(posicionFila, posicionColumna);
 
                         } else if (event.getButton() == MouseButton.SECONDARY) {
+
+                            // Reproduce el sonido de clic derecho
+                            Media sonidoClickDerecho = new Media(new File("src/main/resources/com/example/proyectobuscaminas/IMAGENES/Alerta.mp3").toURI().toString());
+                            MediaPlayer reproductorClickDerecho = new MediaPlayer(sonidoClickDerecho);
+                            reproductorClickDerecho.play();
 
                             // Llama a la función marcarCasilla() si se hace clic derecho
                             marcarCasilla(posicionFila, posicionColumna);
                         }
                         comprobarVictoria(); // Comprueba si se ha ganado el juego
                     }
-
                     private void marcarCasilla(int posicionFila, int posicionColumna) {
                         Button boton = botones[posicionFila][posicionColumna];
                         if (!boton.isDisabled()) {

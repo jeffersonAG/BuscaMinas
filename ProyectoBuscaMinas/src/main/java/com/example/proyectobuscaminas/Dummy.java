@@ -9,6 +9,8 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
@@ -24,6 +26,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
+import java.io.File;
 import java.util.Random;
 
 /**
@@ -138,6 +141,11 @@ public class Dummy extends Application {
                                 contarVacias(posicionFila,posicionColumna);
                                 encontrarMinas(posicionFila,posicionColumna);
                                 turno=2;
+                                // Reproduce el sonido de clic izquierdo
+                                Media sonidoClickIzquierdo = new Media(new File("src/main/resources/com/example/proyectobuscaminas/IMAGENES/Click.mp3").toURI().toString());
+                                MediaPlayer reproductorClickIzquierdo = new MediaPlayer(sonidoClickIzquierdo);
+                                reproductorClickIzquierdo.play();
+
 
                             }}
                         if (event.getButton() == MouseButton.SECONDARY && turno==2) {
@@ -154,7 +162,12 @@ public class Dummy extends Application {
                                     }}}}
 
 
-                        else if (event.getButton() == MouseButton.SECONDARY && turno==1) {
+                        else if (event.getButton() == MouseButton.SECONDARY && turno==1)
+                        {
+                            // Reproduce el sonido de clic derecho
+                            Media sonidoClickDerecho = new Media(new File("src/main/resources/com/example/proyectobuscaminas/IMAGENES/Alerta.mp3").toURI().toString());
+                            MediaPlayer reproductorClickDerecho = new MediaPlayer(sonidoClickDerecho);
+                            reproductorClickDerecho.play();
                             // Llama a la función marcarCasilla() si se hace clic derecho
                             marcarCasilla(posicionFila, posicionColumna);
                         }
