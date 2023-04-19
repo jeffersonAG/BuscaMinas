@@ -1,0 +1,234 @@
+@startuml
+
+/' diagram meta data start
+config=CallConfiguration;
+{
+  "rootMethod": "com.example.proyectobuscaminas.Inicio_de_juego#start(Stage)",
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 3,
+    "backwardDepth": 3,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showMethodParametersTypes": false,
+    "showMethodParametersNames": false,
+    "showMethodReturnType": false,
+    "showPackageLevels": 2,
+    "showCallOrder": false,
+    "edgeMode": "MethodsOnly", // TypesOnly, MethodsOnly, TypesAndMethods, MethodsAndDirectTypeUsage
+    "showDetailedClassStructure": false
+  },
+  "rootClass": "com.example.proyectobuscaminas.Inicio_de_juego",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="LR"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_1322970774 { 
+   	label=example
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_249303121 { 
+   	label=proyectobuscaminas
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   subgraph cluster_1238532864 { 
+   	label=Solitario
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   Solitario216037316XXXstart80204510[
+	label="+ start()"
+	style=filled
+	fillcolor=white
+	tooltip="Solitario
+
+null"
+	fontcolor=darkgreen
+];
+} 
+
+subgraph cluster_1452221736 { 
+   	label=BuscaMinas
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   BuscaMinas216037316XXXcontarVacias515322732[
+	label="+ contarVacias()"
+	style=filled
+	fillcolor=white
+	tooltip="BuscaMinas
+
+null"
+	fontcolor=darkgreen
+];
+
+BuscaMinas216037316XXXstart80204510[
+	label="+ start()"
+	style=filled
+	fillcolor=white
+	tooltip="BuscaMinas
+
+null"
+	fontcolor=darkgreen
+];
+} 
+
+subgraph cluster_2018387383 { 
+   	label=SeleccionJuego
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   SeleccionJuego216037316XXXstart80204510[
+	label="+ start()"
+	style=filled
+	fillcolor=white
+	tooltip="SeleccionJuego
+
+null"
+	fontcolor=darkgreen
+];
+} 
+
+subgraph cluster_406623146 { 
+   	label=Dummy
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   Dummy216037316XXXcontarVacias515322732[
+	label="+ contarVacias()"
+	style=filled
+	fillcolor=white
+	tooltip="Dummy
+
+null"
+	fontcolor=darkgreen
+];
+
+Dummy216037316XXXstart80204510[
+	label="+ start()"
+	style=filled
+	fillcolor=white
+	tooltip="Dummy
+
+null"
+	fontcolor=darkgreen
+];
+} 
+
+subgraph cluster_414940400 { 
+   	label=Tutorial
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   Tutorial216037316XXXstart80204510[
+	label="+ start()"
+	style=filled
+	fillcolor=white
+	tooltip="Tutorial
+
+null"
+	fontcolor=darkgreen
+];
+} 
+
+subgraph cluster_459425900 { 
+   	label=Inicio_de_juego
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   Inicio_de_juego216037316XXXstart80204510[
+	label="+ start()"
+	style=filled
+	fillcolor=white
+	tooltip="Inicio_de_juego
+
+null"
+	penwidth=4
+	fontcolor=darkgreen
+];
+} 
+} 
+} 
+
+'edges    
+BuscaMinas216037316XXXstart80204510 -> BuscaMinas216037316XXXcontarVacias515322732;
+Dummy216037316XXXstart80204510 -> Dummy216037316XXXcontarVacias515322732;
+Inicio_de_juego216037316XXXstart80204510 -> SeleccionJuego216037316XXXstart80204510;
+Inicio_de_juego216037316XXXstart80204510 -> Tutorial216037316XXXstart80204510;
+SeleccionJuego216037316XXXstart80204510 -> BuscaMinas216037316XXXstart80204510;
+SeleccionJuego216037316XXXstart80204510 -> Dummy216037316XXXstart80204510;
+SeleccionJuego216037316XXXstart80204510 -> Solitario216037316XXXstart80204510;
+    
+}
+@enduml
